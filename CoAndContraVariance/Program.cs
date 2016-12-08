@@ -26,9 +26,12 @@ namespace CoAndContraVariance
 
             IGenericInVariant<Animal> animalInVariant = new HandleCatsInVariant();  //Compiler error
             IGenericCovariant<Animal> animalCovariant = new HandleCatsCovariant();  //COVARIANCE
+            IGenericContravariant<Animal> animalContravariant = new HandleCatsContravariant();  //Compiler error
 
             IGenericInVariant<Cat> catInVariant = new HandleAnimalsInVariant();     //Compiler error
             IGenericInVariant<Cat> catCovariant = new HandleAnimalsCovariant();     //Compiler error
+            IGenericContravariant<Cat> catContravariant = new HandleAnimalsContravariant();  //CONTRAVARIANCE
+
         }
     }
 
@@ -40,6 +43,11 @@ namespace CoAndContraVariance
     interface IGenericCovariant<out T>
     {
         T GetAnimal();
+    }
+
+    interface IGenericContravariant<in T>
+    {
+        void TakeAnimal(T animal);
     }
 
     public class Animal { }
@@ -75,6 +83,20 @@ namespace CoAndContraVariance
         public Cat GetAnimal()
         {
             return new Cat();
+        }
+    }
+
+    public class HandleAnimalsContravariant : IGenericContravariant<Animal>
+    {
+        public void TakeAnimal(Animal animal)
+        {
+        }
+    }
+
+    public class HandleCatsContravariant : IGenericContravariant<Cat>
+    {
+        public void TakeAnimal(Cat animal)
+        {
         }
     }
 }
