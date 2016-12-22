@@ -1,0 +1,1 @@
+﻿Non-generic accessor on the non-generic interface, then hide it in the generic implementation
