@@ -11,7 +11,6 @@ namespace DelegateFactories
     {
         static void Main(string[] args)
         {
-            IVehicle vehicle;
             Test test;
 
             //Instantiate vehicle in test class directly
@@ -21,13 +20,10 @@ namespace DelegateFactories
 
 
             //Instantiate through factory delegate
-            Test.CreateVehicle = () => new Car { Name = "lambda" };
             test = new Test();
-            test.UseVehicleFactory();
+            test.UseVehicleFactory(() => new Car { Name = "lambda" });
 
-
-            Test.CreateVehicle = CreateCar;
-            test.UseVehicleFactory();
+            test.UseVehicleFactory(CreateCar);
 
             Console.ReadKey();
 
@@ -64,11 +60,10 @@ namespace DelegateFactories
     public class Test
     {
         public IVehicle Vehicle { get; set; }
-        public static Func<IVehicle> CreateVehicle { get; set; }
 
-        public void UseVehicleFactory()
+        public void UseVehicleFactory(Func<IVehicle> getVehicle)
         {
-            Vehicle = CreateVehicle();
+            Vehicle = getVehicle();
             Vehicle.Drive();
         }
 
