@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{503BB206-6D3E-41DB-93A4-EAF945F82D92}</ProjectGuid>
+    <ProjectGuid>{9934C8DB-E3E2-49B5-A7E9-377A6502494D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoAndContraVariance</RootNamespace>
-    <AssemblyName>CoAndContraVariance</AssemblyName>
+    <RootNamespace>DelegateFactories</RootNamespace>
+    <AssemblyName>DelegateFactories</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

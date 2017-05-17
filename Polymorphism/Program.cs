@@ -44,7 +44,7 @@ namespace Polymorphism
             derived.DerivedMethod();
 
             x = baseDerived.SimpleNumber;
-            y = baseDerived.ProtectedNumber //Protected
+            y = baseDerived.ProtectedNumber; //Protected
 
 
             Console.WriteLine("\nibaseClass = new BaseClass()\n-------------");

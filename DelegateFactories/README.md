@@ -1,0 +1,1 @@
+﻿Use of factory delegate method for creating instances
