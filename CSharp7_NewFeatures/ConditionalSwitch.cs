@@ -19,12 +19,28 @@ namespace CSharp7_NewFeatures
                               NumberOwned = 50
                           };
 
-            switch (boss)
+            SwitchPersons(boss);
+            SwitchPersons(new Person
+                          {
+                              Age = 1
+                          });
+
+            SwitchPersons(new object());
+            SwitchPersons(null);
+        }
+
+        private void SwitchPersons(Object person)
+        {
+            switch (person)
             {
-                case Boss b when (b.NumberOwned > 10):
+                default: //NOTE: Always checked last, irrelevant of position
+                    WriteLine();
+                    break;
+
+                case Boss b when b.NumberOwned > 10:
                     WriteLine($"NoOwned: {b.NumberOwned} HIGH");
                     break;
-                case Boss b when (b.NumberOwned <= 10):
+                case Boss b when b.NumberOwned <= 10:
                     WriteLine($"NoOwned: {b.NumberOwned} LOW");
                     break;
                 case Manager m:
@@ -32,9 +48,12 @@ namespace CSharp7_NewFeatures
                     break;
 
                 case Person p:
-                   WriteLine($"Age: {p.Age}"); 
+                    WriteLine($"Age: {p.Age}");
                     break;
-                
+
+                case null: //NOTE: if null, this is going to be hit first, irrelevant of position
+                    WriteLine();
+                    break;
             }
         }
     }

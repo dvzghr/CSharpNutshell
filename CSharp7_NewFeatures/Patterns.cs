@@ -14,6 +14,8 @@ namespace CSharp7_NewFeatures
             PatternMatching(null);
             PatternMatching(1);
             PatternMatching("2");
+
+            PatternMatching(new Tank());
         }
 
         public void PatternMatching(object o)
@@ -37,7 +39,7 @@ namespace CSharp7_NewFeatures
             //Pre C#7
             if (o is int)
             {
-                Console.WriteLine((int) o + 1);
+                WriteLine((int) o + 1);
             }
 
             //C#7
@@ -58,6 +60,30 @@ namespace CSharp7_NewFeatures
             {
                 WriteLine(k + 2);
             }
+
+            //Pre C#7
+            if (o is Tank)
+            {
+                var tankOld = o as Tank;
+                if (tankOld.IsReady) tankOld.Fire();
+            }
+
+            //C#7
+            if (o is Tank tankNew && tankNew.IsReady) tankNew.Fire();
         }
     }
+
+    abstract class Enemy { }
+
+    class Tank : Enemy
+    {
+        public bool IsReady { get; set; } = true;
+
+        public void Fire()
+        {
+            WriteLine("BOOM");
+        }
+    }
+
+    class Trooper : Enemy { }
 }

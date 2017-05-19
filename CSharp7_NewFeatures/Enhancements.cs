@@ -22,7 +22,23 @@ namespace CSharp7_NewFeatures
             WriteLine(numbers[4]);
 
             //Throwing ex as an expr
+            string name = null;
 
+            //Pre C#7
+            try
+            {
+                if (name == null)
+                    throw new NullReferenceException("Old way");
+                WriteLine(name);
+            }
+            catch { }
+
+            //C#7
+            try
+            {
+                WriteLine(name ?? throw new NullReferenceException("new way"));
+            }
+            catch { }
         }
 
         public ref int Substitute(int value, int[] numbers)
@@ -34,6 +50,21 @@ namespace CSharp7_NewFeatures
             }
 
             throw new IndexOutOfRangeException("Not found!");
+        }
+    }
+
+    class Car
+    {
+        //Expression constructor
+        public Car() => Name = "default";
+
+        private string name;
+
+        //Expression body
+        public string Name
+        {
+            get => name;
+            set => name = value;
         }
     }
 }

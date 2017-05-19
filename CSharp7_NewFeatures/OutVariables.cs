@@ -21,7 +21,7 @@ namespace CSharp7_NewFeatures
             WriteLine($"{hour}:{min}:{sec}");
 
             //C#7
-            GetTime(out int newHour, out int newMin, out int newSec);
+            GetTime(out int newHour, out int newMin, out var newSec);   //NOTE: using var at 3rd arg
             WriteLine($"{newHour}:{newMin}:{newSec}");
 
         }
